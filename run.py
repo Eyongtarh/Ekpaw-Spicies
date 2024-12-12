@@ -45,15 +45,13 @@ def get_sales_data():
 
         sales_data = data_str
 
-
-"""
         if validate_data(sales_data):
             print("Data is valid!")
             break
-"""
-        return sales_data
 
-"""
+    return sales_data
+
+
 def validate_data(value):
     """
     Inside the try, converts all string values into integers.
@@ -61,14 +59,17 @@ def validate_data(value):
     or if there aren't exactly 6 values.
     """
     try:
-        num = int(value)
-        if num > 0:
-            return True
-        else:
-            return False
-    except ValueError:
+        [int(value) for value in value] 
+        if len(value) != 1:
+            raise ValueError (
+                f"Exactly 6 values required, you provided {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again. \n")
         return False
-"""
+
+    return True
+
 def update_sales_worksheet(data):
     """
     Update sales worksheet, add new row with the list data provided
