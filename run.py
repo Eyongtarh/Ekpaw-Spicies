@@ -32,43 +32,44 @@ def get_sales_data():
     """
     while True:
         print("Please enter sales data from the last market.")
-        print("Data should be four numbers, separated by commas.")
-        print("Example: 10,20,30,40\n")
+        print("Data should be a positive integer.")
+        print("Data shall be one at a time\n")
 
 
-        quantity1 = input("Enter the garlic quantity sold: ")
-        quantity2 = input("Enter the leek quantity sold: ")
-        quantity3 = input("Enter the onion quantity sold: ")
-        quantity4 = input("Enter the okra quantity sold: ")
+        quantity1 = int(input("Enter the garlic quantity sold: ").strip())
+        quantity2 = int(input("Enter the leek quantity sold: ").strip())
+        quantity3 = int(input("Enter the onion quantity sold: ").strip())
+        quantity4 = int(input("Enter the okra quantity sold: ").strip())
     
         data_str = [quantity1, quantity2, quantity3, quantity4]
 
         sales_data = data_str
 
         if validate_data(sales_data):
-            print("Data is valid!")
+            print("Valid positive integer!")
             break
-
+        
     return sales_data
 
 
-def validate_data(value):
+def validate_data(values):
     """
     Inside the try, converts all string values into integers.
     Raises ValueError if strings cannot be converted into int,
     or if there aren't exactly 6 values.
     """
     try:
-        [int(value) for value in value] 
-        if len(value) != 1:
+        [int(value) for value in values] 
+        if len(values) != 4:
             raise ValueError (
-                f"Exactly 6 values required, you provided {len(values)}"
+                f"Exactly 4 values required, you provided {len(values)}"
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
         return False
 
     return True
+
 
 def update_sales_worksheet(data):
     """
@@ -105,6 +106,11 @@ def main():
             break
         else:
             print("Invalid choice. Please choose 1, 2, or 3.")
+
+        # Ask if the user wants to add another transaction
+        continue_input = input("\nDo you want to enter another transaction? (y/n): ").lower()
+        if continue_input != 'y':
+            break
 
 
 
