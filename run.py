@@ -36,10 +36,10 @@ def get_sales_data():
         print("Data shall be one at a time\n")
 
 
-        quantity1 = int(input("Enter the garlic quantity sold: ").strip())
-        quantity2 = int(input("Enter the leek quantity sold: ").strip())
-        quantity3 = int(input("Enter the onion quantity sold: ").strip())
-        quantity4 = int(input("Enter the okra quantity sold: ").strip())
+        quantity1 = input("Enter the garlic quantity sold: ").strip()
+        quantity2 = input("Enter the leek quantity sold: ").strip()
+        quantity3 = input("Enter the onion quantity sold: ").strip()
+        quantity4 = input("Enter the okra quantity sold: ").strip()
     
         data_str = [quantity1, quantity2, quantity3, quantity4]
 
@@ -86,7 +86,7 @@ def main():
     Run all program functions
     """
     while True:
-        print("\nWelcome to Ekpaw Data Automation")
+        print("\nWelcome to Ekpaw Spicies Data Automation")
 
         print("Menu:")
         print("1. Input new data")
