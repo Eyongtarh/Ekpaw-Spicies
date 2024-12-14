@@ -80,6 +80,31 @@ def update_sales_worksheet(data):
     sales_worksheet.append_row(data)
     print("Sales worksheet updated successfully.\n")
 
+def calculate_profit_loss(sales_row):
+    """
+    Multiply sales with price to get revenue and multiply sales with cost to get cost.
+    calculate the profit_loss for each item type subtracted cost form the revenue:
+    -Positive value indicates profiy
+    -Negative value indicates loss.
+    """
+    print("Calculating revenue data...\n")
+    revenue = SHEET.worksheet("price").get_all_values()
+    price_row = price[-1]
+
+    profit_loss_data = []
+    for price, sales in zip(price_row, sales_row):
+        revenue = int(price)*sales
+        
+    print("Calculating cost data...\n")
+    cost = SHEET.worksheet("cost").get_all_values()
+    cost_row = cost[-1]
+
+    for cost, sales in zip(cost_row, sales_row):
+        cost = int(cost)*sales    
+    profit_loss_data.append(revenue-cost_data)
+
+    return profit_loss_data
+
 # Main program loop
 def main():
     """
@@ -99,6 +124,7 @@ def main():
             data = get_sales_data()
             sales_data = [int(num) for num in data]
             update_sales_worksheet(sales_data)
+            profit_loss_data = calculate_profit_loss(sales_row)
         elif choice == '2':
             display_data()
         elif choice == '3':
