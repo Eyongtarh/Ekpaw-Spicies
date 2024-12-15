@@ -1,3 +1,4 @@
+import numpy as np
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -111,7 +112,7 @@ def calculate_spicies_cost(sales_row):
 
     return spicies_cost_data
 
-def calculate_profit_loss_data(spicies_cost_row):
+def calculate_profit_loss_data():
     
     """
     calculate the profit_loss for each item type by subtracting cost form the revenue:
@@ -119,17 +120,16 @@ def calculate_profit_loss_data(spicies_cost_row):
     -Negative value indicates loss.
     """
 
-    print("Calculating surplus data...\n")
+    print("Calculating profit_loss data...\n")
     spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
     spicies_revenue_row = spicies_revenue[-1]
-
+    
     profit_loss_data = []
     for spicies_revenue, spicies_cost in zip(spicies_revenue, spicies_cost):
-        profit_loss = spicies_revenue - spicies_cost
+        profit_loss = [a - b for a, b in zip(spicies_revenue - spicies_cost)]
         profit_loss_data.append(profit_loss)
 
     return profit_loss_data
-
 
 # Main program loop
 def main():
@@ -154,7 +154,7 @@ def main():
             update_worksheet(new_spicies_revenue, "spicies_revenue")
             new_spicies_cost = calculate_spicies_cost(sales_data)
             update_worksheet(new_spicies_cost, "spicies_cost")
-            new_profit_loss = calculate_profit_loss_data(spicies_cost_row)
+            new_profit_loss = calculate_profit_loss_data()
             update_worksheet(new_profit_loss, "profit_loss")
             
         elif choice == '2':
