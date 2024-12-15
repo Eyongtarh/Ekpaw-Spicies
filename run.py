@@ -94,13 +94,13 @@ def calculate_spicies_revenue(sales_row):
         revenue = int(selling_prices)*sales
         spicies_revenue_data.append(revenue)
 
-    return spicies_cost_data
+    return spicies_revenue_data
 
 def calculate_spicies_cost(sales_row):
     """
     Multiply sales with cost_prices to get cost.
     """
-    print("Calculating cost data...\n")
+    print("Calculating spicies cost data...\n")
     cost_prices = SHEET.worksheet("cost_prices").get_all_values()
     cost_prices_row = cost_prices[-1]
 
@@ -110,6 +110,7 @@ def calculate_spicies_cost(sales_row):
         spicies_cost_data.append(cost)
 
     return spicies_cost_data
+
     """
     def calculate_profit_loss_data(spicies_cost_row):
     
@@ -151,7 +152,7 @@ def main():
             update_worksheet(sales_data, "sales")
             new_spicies_revenue = calculate_spicies_revenue(sales_data)
             update_worksheet(new_spicies_revenue, "spicies_revenue")
-            new_spicies_cost = calculate_spicies_revenue(sales_data)
+            new_spicies_cost = calculate_spicies_cost(sales_data)
             update_worksheet(new_spicies_cost, "spicies_cost")
             
         elif choice == '2':
