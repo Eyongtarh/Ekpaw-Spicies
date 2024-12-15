@@ -71,37 +71,60 @@ def validate_data(values):
     return True
 
 
-def update_sales_worksheet(data):
+def update_worksheet(data, worksheet):
     """
-    Update sales worksheet, add new row with the list data provided
+    Receives a list of integers to be inserted into a worksheet
+    Update the relevant worksheet with the data provided
     """
-    print("Updating sales worksheet...\n")
-    sales_worksheet = SHEET.worksheet("sales")
-    sales_worksheet.append_row(data)
-    print("Sales worksheet updated successfully.\n")
+    print(f"Updating {worksheet} worksheet... \n")
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    worksheet_to_update.append_row(data)
+    print(f"{worksheet} worksheet updated successfully\n")
 
-def calculate_profit_loss(sales_row):
+def calculate_spicies_revenue(sales_row):
     """
-    Multiply sales with price to get revenue and multiply sales with cost to get cost.
-    calculate the profit_loss for each item type subtracted cost form the revenue:
+    Multiply sales with selling_pricee to get revenue.
+    """
+    print("Calculating spicies revenue data...\n")
+    selling_prices = SHEET.worksheet("selling_prices").get_all_values()
+    selling_prices_row = selling_prices[-1]
+
+    spicies_revenue_data = []
+    for selling_prices, sales in zip(selling_prices_row, sales_row):
+        revenue = int(selling_prices)*sales
+        spicies_revenue_data.append(revenue)
+
+    return spicies_cost_data
+
+def calculate_spicies_cost(sales_row):
+    """
+    Multiply sales with cost_prices to get cost.
+    """
+    print("Calculating cost data...\n")
+    cost_prices = SHEET.worksheet("cost_prices").get_all_values()
+    cost_prices_row = cost_prices[-1]
+
+    spicies_cost_data = []
+    for cost_prices, sales in zip(cost_prices_row, sales_row):
+        cost = int(cost_prices)*sales    
+        spicies_cost_data.append(cost)
+
+    return spicies_cost_data
+
+def calculate_profit_loss_data(spicies_cost_row):
+    """
+    calculate the profit_loss for each item type by subtracting cost form the revenue:
     -Positive value indicates profiy
     -Negative value indicates loss.
     """
-    print("Calculating revenue data...\n")
-    revenue = SHEET.worksheet("price").get_all_values()
-    price_row = price[-1]
+    print("Calculating surplus data...\n")
+    profit_loss = SHEET.worksheet("profit_loss").get_all_values()
+    spicies_revenue_row = spicies_revenue[-1]
 
     profit_loss_data = []
-    for price, sales in zip(price_row, sales_row):
-        revenue = int(price)*sales
-        
-    print("Calculating cost data...\n")
-    cost = SHEET.worksheet("cost").get_all_values()
-    cost_row = cost[-1]
-
-    for cost, sales in zip(cost_row, sales_row):
-        cost = int(cost)*sales    
-    profit_loss_data.append(revenue-cost_data)
+    for spicies_revenue, spicies_cost in zip(spicies_revenue, spicies_cost):
+        profit_loss = int(spicies_revenue) - spicies_cost
+        profit_loss_data.append(profit_loss)
 
     return profit_loss_data
 
@@ -123,8 +146,12 @@ def main():
         if choice == '1':
             data = get_sales_data()
             sales_data = [int(num) for num in data]
-            update_sales_worksheet(sales_data)
-            profit_loss_data = calculate_profit_loss(sales_row)
+            update_worksheet(sales_data, "sales")
+            calculate_spicies_revenue(sales_data)
+            update_worksheet(spicies_revenue, "sales")
+            calculate_spicies_revenue(sales_row)
+            update_worksheet(spicies_cost, "sales")
+            
         elif choice == '2':
             display_data()
         elif choice == '3':
