@@ -111,25 +111,29 @@ def calculate_spicies_cost(sales_row):
         spicies_cost_data.append(cost)
 
     return spicies_cost_data
-
+"""
 def calculate_profit_loss_data():
     
-    """
+    
     calculate the profit_loss for each item type by subtracting cost form the revenue:
     -Positive value indicates profiy
     -Negative value indicates loss.
-    """
+    
 
     print("Calculating profit_loss data...\n")
     spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
     spicies_revenue_row = spicies_revenue[-1]
-    
+
+    spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
+    spicies_cost_row = spicies_cost[-1]
+
     profit_loss_data = []
     for spicies_revenue, spicies_cost in zip(spicies_revenue, spicies_cost):
-        profit_loss = [a - b for a, b in zip(spicies_revenue - spicies_cost)]
+        profit_loss = spicies_revenue - spicies_cost
         profit_loss_data.append(profit_loss)
 
     return profit_loss_data
+"""
 
 # Main program loop
 def main():
@@ -154,8 +158,8 @@ def main():
             update_worksheet(new_spicies_revenue, "spicies_revenue")
             new_spicies_cost = calculate_spicies_cost(sales_data)
             update_worksheet(new_spicies_cost, "spicies_cost")
-            new_profit_loss = calculate_profit_loss_data()
-            update_worksheet(new_profit_loss, "profit_loss")
+            #new_profit_loss = calculate_profit_loss_data()
+            #update_worksheet(new_profit_loss, "profit_loss")
             
         elif choice == '2':
             display_data()
@@ -166,7 +170,7 @@ def main():
             print("Invalid choice. Please choose 1, 2, or 3.")
 
         # Ask if the user wants to add another transaction
-        continue_input = input("\nDo you want to enter another transaction? (y/n): ").lower()
+        continue_input = input("\nDo you want to enter another sales data? (y/n): ").lower()
         if continue_input != 'y':
             break
 
