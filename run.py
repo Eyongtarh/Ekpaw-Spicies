@@ -110,13 +110,13 @@ def calculate_spicies_cost(sales_row):
         spicies_cost_data.append(cost)
 
     return spicies_cost_data
-
-def calculate_profit_loss_data(spicies_cost_row):
     """
+    def calculate_profit_loss_data(spicies_cost_row):
+    
     calculate the profit_loss for each item type by subtracting cost form the revenue:
     -Positive value indicates profiy
     -Negative value indicates loss.
-    """
+    
     print("Calculating surplus data...\n")
     profit_loss = SHEET.worksheet("profit_loss").get_all_values()
     spicies_revenue_row = spicies_revenue[-1]
@@ -127,6 +127,8 @@ def calculate_profit_loss_data(spicies_cost_row):
         profit_loss_data.append(profit_loss)
 
     return profit_loss_data
+
+    """
 
 # Main program loop
 def main():
@@ -147,10 +149,10 @@ def main():
             data = get_sales_data()
             sales_data = [int(num) for num in data]
             update_worksheet(sales_data, "sales")
-            calculate_spicies_revenue(sales_data)
-            update_worksheet(spicies_revenue, "sales")
-            calculate_spicies_revenue(sales_row)
-            update_worksheet(spicies_cost, "sales")
+            new_spicies_revenue = calculate_spicies_revenue(sales_data)
+            update_worksheet(new_spicies_revenue, "spicies_revenue")
+            new_spicies_cost = calculate_spicies_revenue(sales_data)
+            update_worksheet(new_spicies_cost, "spicies_cost")
             
         elif choice == '2':
             display_data()
