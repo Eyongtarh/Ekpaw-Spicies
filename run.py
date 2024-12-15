@@ -31,7 +31,7 @@ def get_sales_data():
     until it is valid.
     """
     while True:
-        print("Please enter sales data from the last market.")
+        print("\nPlease enter sales data from the last market.")
         print("Data should be a positive integer.")
         print("Data shall be one at a time\n")
 
@@ -111,25 +111,25 @@ def calculate_spicies_cost(sales_row):
 
     return spicies_cost_data
 
-    """
-    def calculate_profit_loss_data(spicies_cost_row):
+def calculate_profit_loss_data(spicies_cost_row):
     
+    """
     calculate the profit_loss for each item type by subtracting cost form the revenue:
     -Positive value indicates profiy
     -Negative value indicates loss.
-    
+    """
+
     print("Calculating surplus data...\n")
-    profit_loss = SHEET.worksheet("profit_loss").get_all_values()
+    spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
     spicies_revenue_row = spicies_revenue[-1]
 
     profit_loss_data = []
     for spicies_revenue, spicies_cost in zip(spicies_revenue, spicies_cost):
-        profit_loss = int(spicies_revenue) - spicies_cost
+        profit_loss = spicies_revenue - spicies_cost
         profit_loss_data.append(profit_loss)
 
     return profit_loss_data
 
-    """
 
 # Main program loop
 def main():
@@ -139,7 +139,7 @@ def main():
     while True:
         print("\nWelcome to Ekpaw Spicies Data Automation\n")
 
-        print("Menu:\n")
+        print("Menu:")
         print("1. Input new data")
         print("2. Display old data")
         print("3. Exit")
@@ -154,6 +154,8 @@ def main():
             update_worksheet(new_spicies_revenue, "spicies_revenue")
             new_spicies_cost = calculate_spicies_cost(sales_data)
             update_worksheet(new_spicies_cost, "spicies_cost")
+            new_profit_loss = calculate_profit_loss_data(spicies_cost_row)
+            update_worksheet(new_profit_loss, "profit_loss")
             
         elif choice == '2':
             display_data()
