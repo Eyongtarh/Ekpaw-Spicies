@@ -30,9 +30,10 @@ def display_data():
         spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
         profit_loss = SHEET.worksheet("profit_loss").get_all_values()
         display_data_to_user()
-    print(tabulate(
-        sales, spicies_revenue, spicies_cost, profit_loss
-    ))
+    print(tabulate(sales))
+    print(tabulate(spicies_revenue))
+    print(tabulate(spicies_cost))
+    print(tabulate(profit_loss))
 
 def get_sales_data():
     """
@@ -195,11 +196,13 @@ Menu:
             break
         else:
             print("Invalid choice. Please choose 1, 2, or 3.")
+            main()
+
 
         """
         Ask if the user wants to add another sales data
         """
-        continue_input = input("\nDo you want to enter another sales data? (y/n): ").lower()
+        continue_input = input("\nDo you want to enter another sales data, enter y for yes, otherwise, enter any key? (y): ").lower()
         if continue_input != 'y':
             print("Program exited")
             break
