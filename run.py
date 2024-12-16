@@ -65,7 +65,7 @@ def validate_data(values):
     or if there aren't exactly 6 values.
     """
     try:
-        [int(value) for value in values] 
+        [int(value) for value in values]
         if len(values) != 4:
             raise ValueError (
                 f"Exactly 4 values required, you provided {len(values)}"
@@ -139,7 +139,7 @@ def display_data_to_user():
     spicies_revenue_row = spicies_revenue[-1]
     total_spicies_revenue = sum(int(item) for item in spicies_revenue_row)
     print("Total spicies revenue for last market day sales is:")
-    print(total_spicies_revenue)
+    print(total_spicies_revenue,'\n')
     
     """
     To display current data to user
@@ -149,7 +149,7 @@ def display_data_to_user():
     spicies_cost_row = spicies_cost[-1]
     total_spicies_cost = sum(int(item) for item in spicies_cost_row)
     print("Total spicies cost for last market day sales is:")
-    print(total_spicies_cost)
+    print(total_spicies_cost,'\n')
 
     """
     To display current data to user
@@ -159,7 +159,7 @@ def display_data_to_user():
     profit_loss_row = profit_loss[-1]
     total_profit_loss = sum(int(item) for item in profit_loss_row)
     print("Total profit for last market day sales is:")
-    print(total_profit_loss)
+    print(total_profit_loss,'\n')
     return total_spicies_revenue, total_spicies_cost, total_profit_loss
 
 def main():
