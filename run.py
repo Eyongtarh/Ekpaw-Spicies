@@ -29,10 +29,10 @@ def display_data():
         spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
         spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
         profit_loss = SHEET.worksheet("profit_loss").get_all_values()
-    print(
+    print(tabulate(
         'Sales data:\n',sales,'\nRevenue data:\n',spicies_revenue,'\nCost data:\n',
     spicies_cost,'\nprofit/loss data:\n',profit_loss
-    )
+    ))
 
 def get_sales_data():
     """
