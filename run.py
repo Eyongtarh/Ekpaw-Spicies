@@ -13,17 +13,23 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('ekpaw_spicies')
 
-# Function to display existing data
 def display_data():
+    """
+    Function to display existing data
+    """
     if False:
         print("No data available.")
     else:
         print("Current Data:")
-        sales = SHEET.worksheet('sales')
-        data = sales.get_all_values()
-    print(data)
+        sales = SHEET.worksheet('sales').get_all_values()
+        spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
+        spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
+        profit_loss = SHEET.worksheet("profit_loss").get_all_values()
+    print(
+        'Sales data:\n',sales,'\nRevenue data:\n',spicies_revenue,'\nCost data:\n',
+    spicies_cost,'\nprofit/loss data:\n',profit_loss
+    )
 
-# Function to input new data
 def get_sales_data():
     """
     Get sales figures input from the user.
@@ -32,26 +38,21 @@ def get_sales_data():
     until it is valid.
     """
     while True:
-        print("\nPlease enter sales data from the last market.")
-        print("Data should be a positive integer.")
-        print("Data shall be one at a time\n")
-
-
+        print(f"""
+\nPlease enter sales data from the last market.
+Data should be a positive whole number.
+Data shall be one at a time\n
+        """)
         quantity1 = input("Enter the garlic quantity sold:\n").strip()
         quantity2 = input("Enter the leek quantity sold:\n").strip()
         quantity3 = input("Enter the onion quantity sold:\n").strip()
         quantity4 = input("Enter the okra quantity sold:\n").strip()
-    
         data_str = [quantity1, quantity2, quantity3, quantity4]
-
         sales_data = data_str
-
         if validate_data(sales_data):
             print("Valid positive integer!")
             break
-        
     return sales_data
-
 
 def validate_data(values):
     """
@@ -68,9 +69,7 @@ def validate_data(values):
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
         return False
-
     return True
-
 
 def update_worksheet(data, worksheet):
     """
@@ -89,17 +88,15 @@ def calculate_spicies_revenue(sales_row):
     print("Calculating spicies revenue data...\n")
     selling_prices = SHEET.worksheet("selling_prices").get_all_values()
     selling_prices_row = selling_prices[-1]
-
     spicies_revenue_data = []
     for selling_prices, sales in zip(selling_prices_row, sales_row):
         revenue = int(selling_prices)*sales
         spicies_revenue_data.append(revenue)
-
     return spicies_revenue_data
 
 def calculate_spicies_cost(sales_row):
     """
-    Multiply sales with cost_prices to get cost.
+    Multiply sales with cost_prices to get cost of spicies.
     """
     print("Calculating spicies cost data...\n")
     cost_prices = SHEET.worksheet("cost_prices").get_all_values()
@@ -109,9 +106,7 @@ def calculate_spicies_cost(sales_row):
     for cost_prices, sales in zip(cost_prices_row, sales_row):
         cost = int(cost_prices)*sales    
         spicies_cost_data.append(cost)
-
     return spicies_cost_data
-
 
 def calculate_profit_loss_data():
     """
@@ -119,34 +114,36 @@ def calculate_profit_loss_data():
     -Positive value indicates profiy
     -Negative value indicates loss.
     """
-
     print("Calculating profit_loss data...\n")
     spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
     spicies_revenue_row = spicies_revenue[-1]
-
     spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
     spicies_cost_row = spicies_cost[-1]
-
     profit_loss_data = []
     for spicies_revenue, spicies_cost in zip(spicies_revenue_row, spicies_cost_row):    
         profit_loss = int(spicies_revenue) - int(spicies_cost)
         profit_loss_data.append(profit_loss)
-
     return profit_loss_data
+"""
+# Function to display current data to user
+def display_data_to_user():
+    profit_loss = SHEET.worksheet("profit_loss").get_all_values()
+    profit_loss_row = sum(profit_loss[-1])
+    print(profit_loss_row)
+"""
 
-# Main program loop
 def main():
     """
     Run all program functions
     """
     while True:
-        print("\nWelcome to Ekpaw Spicies Data Automation\n")
-
-        print("Menu:")
-        print("1. Input new data")
-        print("2. Display old data")
-        print("3. Exit")
-        
+        print(f"""
+\nWelcome to Ekpaw Spicies Data Automation\n
+Menu:
+1. Input new data
+2. Display old data
+3. Exit
+        """)
         choice = input("Enter your choice (1, 2, or 3): \n")
         
         if choice == '1':
@@ -159,20 +156,23 @@ def main():
             update_worksheet(new_spicies_cost, "spicies_cost")
             new_profit_loss = calculate_profit_loss_data()
             update_worksheet(new_profit_loss, "profit_loss")
+            #display_data_to_user()
             
         elif choice == '2':
             display_data()
         elif choice == '3':
-            print("Exiting the program...")
+            print("Program exited")
             break
         else:
             print("Invalid choice. Please choose 1, 2, or 3.")
 
-        # Ask if the user wants to add another sales data
+        """
+        Ask if the user wants to add another sales data
+        """
         continue_input = input("\nDo you want to enter another sales data? (y/n): ").lower()
         if continue_input != 'y':
+            print("Program exited")
             break
-
-
+        
 if __name__ == "__main__":
     main()
