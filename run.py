@@ -202,7 +202,9 @@ Menu:
         """
         Ask if the user wants to add another sales data
         """
-        continue_input = input("\nDo you want to enter another sales data, enter y for yes, otherwise, enter any key? (y): ").lower()
+        continue_input = input(
+            "\nDo you want to enter another sales data, enter y for yes, otherwise, enter any key?"
+            ).lower()
         if continue_input != 'y':
             print("Program exited")
             break
