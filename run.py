@@ -29,6 +29,7 @@ def display_data():
         spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
         spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
         profit_loss = SHEET.worksheet("profit_loss").get_all_values()
+        display_data_to_user()
     print(tabulate(
         'Sales data:',sales,'Revenue data:',spicies_revenue,'Cost data:',
     spicies_cost,'profit/loss data:',profit_loss
@@ -128,13 +129,39 @@ def calculate_profit_loss_data():
         profit_loss = int(spicies_revenue) - int(spicies_cost)
         profit_loss_data.append(profit_loss)
     return profit_loss_data
-"""
-# Function to display current data to user
+
+
 def display_data_to_user():
+    """
+    To display current data to user
+    Total revenue for last market day sales
+    """
+    spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
+    spicies_revenue_row = spicies_revenue[-1]
+    total_spicies_revenue = sum(int(item) for item in spicies_revenue_row)
+    print("Total spicies revenue for last market day sales is:")
+    print(total_spicies_revenue)
+    
+    """
+    To display current data to user
+    Total cost for last market day sales
+    """
+    spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
+    spicies_cost_row = spicies_cost[-1]
+    total_spicies_cost = sum(int(item) for item in spicies_cost_row)
+    print("Total spicies cost for last market day sales is:")
+    print(total_spicies_cost)
+
+    """
+    To display current data to user
+    Total profit/loss for last market day sales
+    """
     profit_loss = SHEET.worksheet("profit_loss").get_all_values()
-    profit_loss_row = sum(profit_loss[-1])
-    print(profit_loss_row)
-"""
+    profit_loss_row = profit_loss[-1]
+    total_profit_loss = sum(int(item) for item in profit_loss_row)
+    print("Total profit for last market day sales is:")
+    print(total_profit_loss)
+    return total_spicies_revenue, total_spicies_cost, total_profit_loss
 
 def main():
     """
@@ -160,7 +187,7 @@ Menu:
             update_worksheet(new_spicies_cost, "spicies_cost")
             new_profit_loss = calculate_profit_loss_data()
             update_worksheet(new_profit_loss, "profit_loss")
-            #display_data_to_user()
+            display_data_to_user()
             
         elif choice == '2':
             display_data()
