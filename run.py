@@ -1,5 +1,4 @@
 import numpy as np
-import tabulate
 from simple_term_menu import TerminalMenu
 from colorama import just_fix_windows_console
 just_fix_windows_console()
