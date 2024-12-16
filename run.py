@@ -1,4 +1,8 @@
 import numpy as np
+from tabulate import tabulate
+from simple_term_menu import TerminalMenu
+from colorama import just_fix_windows_console
+just_fix_windows_console()
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -173,6 +177,6 @@ Menu:
         if continue_input != 'y':
             print("Program exited")
             break
-        
+
 if __name__ == "__main__":
     main()
