@@ -30,8 +30,8 @@ def display_data():
         spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
         profit_loss = SHEET.worksheet("profit_loss").get_all_values()
     print(tabulate(
-        'Sales data:\n',sales,'\nRevenue data:\n',spicies_revenue,'\nCost data:\n',
-    spicies_cost,'\nprofit/loss data:\n',profit_loss
+        'Sales data:',sales,'Revenue data:',spicies_revenue,'Cost data:',
+    spicies_cost,'profit/loss data:',profit_loss
     ))
 
 def get_sales_data():
