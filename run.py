@@ -1,6 +1,4 @@
 import numpy as np
-from colorama import just_fix_windows_console
-just_fix_windows_console()
 import gspread
 from google.oauth2.service_account import Credentials
 
