@@ -1,3 +1,8 @@
+import numpy as np
+from tabulate import tabulate
+from simple_term_menu import TerminalMenu
+from colorama import just_fix_windows_console
+just_fix_windows_console()
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -110,11 +115,32 @@ def calculate_spicies_cost(sales_row):
         spicies_cost_data.append(cost)
 
     return spicies_cost_data
-"""
+
+    """
+
 def calculate_profit_loss_data():
+
+    print("Calculating profit_loss data...\n")
+
+    result_list_data = []
+    spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
+    spicies_revenue_row = spicies_revenue[-1]
+
+    spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
+    spicies_cost_row = spicies_cost[-1]
+
+    array1 = np.array(spicies_revenue_row)
+    array2 = np.array(spicies_cost_row)
+
+    result = np.subtract(array1, array2)
+    result_list_data = result.tolist()
+
+    return result_list_data
     
-    
-    calculate the profit_loss for each item type by subtracting cost form the revenue:
+    or
+
+
+    calculate the profit_loss for each item type by subtracting cost form the revenue.
     -Positive value indicates profiy
     -Negative value indicates loss.
     
@@ -127,13 +153,12 @@ def calculate_profit_loss_data():
     spicies_cost_row = spicies_cost[-1]
 
     profit_loss_data = []
-    for spicies_revenue, spicies_cost in zip(spicies_revenue, spicies_cost):
+    for spicies_revenue, spicies_cost in zip(spicies_revenue_row, spicies_cost_row):
         profit_loss = spicies_revenue - spicies_cost
         profit_loss_data.append(profit_loss)
 
     return profit_loss_data
 """
-
 # Main program loop
 def main():
     """
@@ -168,7 +193,7 @@ def main():
         else:
             print("Invalid choice. Please choose 1, 2, or 3.")
 
-        # Ask if the user wants to add another transaction
+        # Ask if the user wants to add another sales data
         continue_input = input("\nDo you want to enter another sales data? (y/n): ").lower()
         if continue_input != 'y':
             break
