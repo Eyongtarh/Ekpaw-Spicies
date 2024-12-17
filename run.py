@@ -1,10 +1,10 @@
+import gspread
+from google.oauth2.service_account import Credentials
 import numpy as np
 from tabulate import tabulate
 from simple_term_menu import TerminalMenu
 from colorama import just_fix_windows_console
 just_fix_windows_console()
-import gspread
-from google.oauth2.service_account import Credentials
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -16,6 +16,7 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('ekpaw_spicies')
+
 
 def display_data():
     """
@@ -35,13 +36,14 @@ def display_data():
     print(tabulate(spicies_cost))
     print(tabulate(profit_loss))
 
+
 def get_sales_data():
     """
     Get sales figures input from the user.
     Run a while loop to collect a valid string of data from the user
-    via the terminal, one item at a time. The loop will repeatedly request data, 
-    until it is valid. There is a while loop for the complete data collected and 
-    a while loop for each data to be collected.
+    via the terminal, one item at a time. The loop will repeatedly
+    request data, until it is valid. There is a while loop for the
+    complete data collected and a while loop for each data to be collected.
     """
     while True:
         print(f"""
@@ -52,46 +54,47 @@ Data will be requested one at a time for the four different spicies.\n
         while True:
             try:
                 quantity1 = input("Enter the garlic quantity sold:\n").strip()
-                if not -1 < int(quantity1) < 100:      
-                            print("Please value must be between/from 0 and/to 99.") 
+                if not -1 < int(quantity1) < 100:
+                    print("Please value must be between/from 0 and/to 99.")
                 else:
-                    break    
+                    break
             except Exception:
                 print("Please input a valid integer between/from 0 and/to 99.")
         while True:
             try:
                 quantity2 = input("Enter the leek quantity sold:\n").strip()
                 if not -1 < int(quantity2) < 100:
-                            print("Please value must be between/from 0 and/to 99.")
+                    print("Please value must be between/from 0 and/to 99.")
                 else:
-                    break  
+                    break
             except Exception:
                 print("Please input a valid integer between/from 0 and/to 99.")
         while True:
             try:
                 quantity3 = input("Enter the onion quantity sold:\n").strip()
                 if not -1 < int(quantity3) < 100:
-                            print("Please value must be between/from 0 and/to 99.")
+                    print("Please value must be between/from 0 and/to 99.")
                 else:
-                    break  
+                    break
             except Exception:
                 print("Please input a valid integer between/from 0 and/to 99.")
         while True:
             try:
                 quantity4 = input("Enter the okra quantity sold:\n").strip()
                 if not -1 < int(quantity4) < 100:
-                            print("Please value must be between/from 0 and/to 99.")
+                    print("Please value must be between/from 0 and/to 99.")
                 else:
-                    break   
+                    break
             except Exception:
                 print("Please input a valid integer between/from 0 and/to 99.")
 
         data_str = [quantity1, quantity2, quantity3, quantity4]
         sales_data = data_str
         if validate_data(sales_data):
-            print("Valid positive integer!") 
+            print("Valid positive integer!")
             break
     return sales_data
+
 
 def validate_data(values):
     """
@@ -102,13 +105,14 @@ def validate_data(values):
     try:
         [int(value) for value in values]
         if len(values) != 4:
-            raise ValueError (
+            raise ValueError(
                 f"Exactly 4 values required, you provided {len(values)}"
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again. \n")
         return False
     return True
+
 
 def update_worksheet(data, worksheet):
     """
@@ -119,6 +123,7 @@ def update_worksheet(data, worksheet):
     worksheet_to_update = SHEET.worksheet(worksheet)
     worksheet_to_update.append_row(data)
     print(f"{worksheet} worksheet updated successfully\n")
+
 
 def calculate_spicies_revenue(sales_row):
     """
@@ -133,6 +138,7 @@ def calculate_spicies_revenue(sales_row):
         spicies_revenue_data.append(revenue)
     return spicies_revenue_data
 
+
 def calculate_spicies_cost(sales_row):
     """
     Multiply sales with cost_prices to get cost of spicies.
@@ -143,13 +149,15 @@ def calculate_spicies_cost(sales_row):
 
     spicies_cost_data = []
     for cost_prices, sales in zip(cost_prices_row, sales_row):
-        cost = int(cost_prices)*sales    
+        cost = int(cost_prices)*sales
         spicies_cost_data.append(cost)
     return spicies_cost_data
 
+
 def calculate_profit_loss_data():
     """
-    calculate the profit_loss for each item type by subtracting cost form the revenue.
+    calculate the profit_loss for each item type by
+    subtracting cost form the revenue.
     -Positive value indicates profiy
     -Negative value indicates loss.
     """
@@ -159,7 +167,7 @@ def calculate_profit_loss_data():
     spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
     spicies_cost_row = spicies_cost[-1]
     profit_loss_data = []
-    for spicies_revenue, spicies_cost in zip(spicies_revenue_row, spicies_cost_row):    
+    for spicies_revenue, spicies_cost in zip(spicies_revenue_row, spicies_cost_row):
         profit_loss = int(spicies_revenue) - int(spicies_cost)
         profit_loss_data.append(profit_loss)
     return profit_loss_data
@@ -174,8 +182,8 @@ def display_data_to_user():
     spicies_revenue_row = spicies_revenue[-1]
     total_spicies_revenue = sum(int(item) for item in spicies_revenue_row)
     print("Total spicies revenue for last market day sales is:")
-    print(total_spicies_revenue,'\n')
-    
+    print(total_spicies_revenue, '\n')
+
     """
     To display current data to user
     Total cost for last market day sales
@@ -184,7 +192,7 @@ def display_data_to_user():
     spicies_cost_row = spicies_cost[-1]
     total_spicies_cost = sum(int(item) for item in spicies_cost_row)
     print("Total spicies cost for last market day sales is:")
-    print(total_spicies_cost,'\n')
+    print(total_spicies_cost, '\n')
 
     """
     To display current data to user
@@ -194,7 +202,7 @@ def display_data_to_user():
     profit_loss_row = profit_loss[-1]
     total_profit_loss = sum(int(item) for item in profit_loss_row)
     print("Total profit for last market day sales is:")
-    print(total_profit_loss,'\n')
+    print(total_profit_loss, '\n')
     return total_spicies_revenue, total_spicies_cost, total_profit_loss
 
 
@@ -211,7 +219,6 @@ Menu:
 3 or space. Exit
         """)
         choice = input("Enter your choice from above (1, 2, or 3): \n")
-        
         if choice == '1':
             data = get_sales_data()
             sales_data = [int(num) for num in data]
@@ -222,7 +229,7 @@ Menu:
             update_worksheet(new_spicies_cost, "spicies_cost")
             new_profit_loss = calculate_profit_loss_data()
             update_worksheet(new_profit_loss, "profit_loss")
-            display_data_to_user()         
+            display_data_to_user()
         elif choice == '2':
             display_data()
         elif choice == '3':
@@ -238,14 +245,15 @@ Menu:
         """
         Ask if the user wants to add another sales data
         """
-        continue_input = input(
-        "\nDo you want to enter another sales data?, enter y for yes or (any key) for no?\n"
-        ).lower()
+        continue_input = input(f"""\nDo you want to enter another sales data?,
+        enter y for yes or (any key) for no?\n
+        """).lower()
         if continue_input == 'y':
             main()
         else:
             print("Program exited")
         break
-    
+
+
 if __name__ == "__main__":
     main()

@@ -1,7 +1,7 @@
-![Welcome to Ekpaw Spicies Data Automation](assets/images/startpage-image.png)
-
 # Welcome to Ekpaw Spicies Data Automation
----
+
+[Link to Ekpaw Spicies Data Automation](https://ekpaw-spicies-e70a831cb30f.herokuapp.com/)
+
 This is an a data automation to calculate profit or loss in each market day given
 the total quantity of goods sold. The goods here are four different spicies sold in
 kilograms. The spicies are garlic, leek , onion, and okra.
@@ -64,7 +64,7 @@ decisions.
 * Python3 was used to anchor the project and direct all application behavior.
 
 ## Tools:
----
+
 * Gidpod was used as the main tool to write and edit code.
 * Git was used for the version control of the website.
 * GitHub was used to host the code of the website.
@@ -76,7 +76,7 @@ decisions.
 ## Deployment
 
 * The program was deployed to [Heroku](https://dashboard.heroku.com/).
-* The program can be reached by the [link](https://school-time-table-e8ecb79978ea.herokuapp.com/)
+* The program can be reached by the [link](https://ekpaw-spicies-e70a831cb30f.herokuapp.com/)
 
 ### To deploy the project to Heroku so it can be run as a remote web application
 - Create a Heroku account if you don't already have one here [Heroku](https://dashboard.heroku.com/).
@@ -93,5 +93,10 @@ decisions.
 - Click manual Deploy Branch
 - Click View to launch the application inside a web page.
 
-# Acknowledgements
-I am enormously thankful to my mentor guidance and valuable feedback!
+## Credits
+
+I got some help from the Love sandwiches project, course conten.
+
+## Acknowledgements
+
+- [Code Institute](https://codeinstitute.net/) tutors and Mentor for their continues support.
