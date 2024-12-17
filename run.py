@@ -197,6 +197,7 @@ def display_data_to_user():
     print(total_profit_loss,'\n')
     return total_spicies_revenue, total_spicies_cost, total_profit_loss
 
+
 def main():
     """
     Run all program functions
@@ -207,7 +208,7 @@ def main():
 Menu:
 1. Input new data
 2. Display old data
-3. Exit
+3 or space. Exit
         """)
         choice = input("Enter your choice from above (1, 2, or 3): \n")
         
@@ -221,11 +222,13 @@ Menu:
             update_worksheet(new_spicies_cost, "spicies_cost")
             new_profit_loss = calculate_profit_loss_data()
             update_worksheet(new_profit_loss, "profit_loss")
-            display_data_to_user()
-            
+            display_data_to_user()         
         elif choice == '2':
             display_data()
         elif choice == '3':
+            print("Program exited")
+            break
+        elif choice == '':
             print("Program exited")
             break
         else:
@@ -242,7 +245,8 @@ Menu:
             main()
         else:
             print("Program exited")
-            break
+        break
+    
 
 if __name__ == "__main__":
     main()
