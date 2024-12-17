@@ -240,9 +240,6 @@ Menu:
         ).lower()
         if continue_input == 'y':
             main()
-        elif continue_input == 'n':
-            print("Program exited")
-            break
         else:
             print("Program exited")
             break
