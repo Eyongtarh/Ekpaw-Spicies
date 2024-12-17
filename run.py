@@ -40,19 +40,20 @@ def get_sales_data():
     Get sales figures input from the user.
     Run a while loop to collect a valid string of data from the user
     via the terminal, one item at a time. The loop will repeatedly request data, 
-    until it is valid.
+    until it is valid. There is a while loop for the complete data collected and 
+    a while loop for each data to be collected.
     """
     while True:
         print(f"""
 \nPlease enter sales data from the last market.
-Data should be a positive whole number.
-Data shall be one at a time\n
+Data should be a positive whole number between/from 0 and 99.
+Data will be requested one at a time for the four different spicies.\n
         """)
         while True:
             try:
                 quantity1 = input("Enter the garlic quantity sold:\n").strip()
                 if not -1 < int(quantity1) < 100:      
-                            print("Value must be between 0 and 99") 
+                            print("Please value must be between 0 and 99") 
                 else:
                     break    
             except Exception:
@@ -61,7 +62,7 @@ Data shall be one at a time\n
             try:
                 quantity2 = input("Enter the leek quantity sold:\n").strip()
                 if not -1 < int(quantity2) < 100:
-                            print("Value must be between 0 and 99")
+                            print("Please value must be between 0 and 99")
                 else:
                     break  
             except Exception:
@@ -70,7 +71,7 @@ Data shall be one at a time\n
             try:
                 quantity3 = input("Enter the onion quantity sold:\n").strip()
                 if not -1 < int(quantity3) < 100:
-                            print("Value must be between 0 and 99")
+                            print("Please value must be between 0 and 99")
                 else:
                     break  
             except Exception:
@@ -79,7 +80,7 @@ Data shall be one at a time\n
             try:
                 quantity4 = input("Enter the okra quantity sold:\n").strip()
                 if not -1 < int(quantity4) < 100:
-                            print("Value must be between 0 and 99")
+                            print("Please value must be between 0 and 99")
                 else:
                     break   
             except Exception:
@@ -208,7 +209,7 @@ Menu:
 2. Display old data
 3. Exit
         """)
-        choice = input("Enter your choice (1, 2, or 3): \n")
+        choice = input("Enter your choice from above (1, 2, or 3): \n")
         
         if choice == '1':
             data = get_sales_data()
