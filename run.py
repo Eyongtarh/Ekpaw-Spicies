@@ -239,7 +239,7 @@ Menu:
         Ask if the user wants to add another sales data
         """
         continue_input = input(
-        "\nDo you want to enter another sales data, enter y for yes, and n or any key for no?\n"
+        "\nDo you want to enter another sales data?, enter y for yes or (any key) for no?\n"
         ).lower()
         if continue_input == 'y':
             main()
