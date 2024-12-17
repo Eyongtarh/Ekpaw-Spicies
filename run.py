@@ -48,14 +48,47 @@ def get_sales_data():
 Data should be a positive whole number.
 Data shall be one at a time\n
         """)
-        quantity1 = input("Enter the garlic quantity sold:\n").strip()
-        quantity2 = input("Enter the leek quantity sold:\n").strip()
-        quantity3 = input("Enter the onion quantity sold:\n").strip()
-        quantity4 = input("Enter the okra quantity sold:\n").strip()
+        while True:
+            try:
+                quantity1 = input("Enter the garlic quantity sold:\n").strip()
+                if not -1 < int(quantity1) < 100:      
+                            print("Value must be between 0 and 99") 
+                else:
+                    break    
+            except Exception:
+                print("Please input a valid integer between 0 and 99.")
+        while True:
+            try:
+                quantity2 = input("Enter the leek quantity sold:\n").strip()
+                if not -1 < int(quantity2) < 100:
+                            print("Value must be between 0 and 99")
+                else:
+                    break  
+            except Exception:
+                print("Please input a valid integer between 0 and 99.")
+        while True:
+            try:
+                quantity3 = input("Enter the onion quantity sold:\n").strip()
+                if not -1 < int(quantity3) < 100:
+                            print("Value must be between 0 and 99")
+                else:
+                    break  
+            except Exception:
+                print("Please input a valid integer between 0 and 99.")
+        while True:
+            try:
+                quantity4 = input("Enter the okra quantity sold:\n").strip()
+                if not -1 < int(quantity4) < 100:
+                            print("Value must be between 0 and 99")
+                else:
+                    break   
+            except Exception:
+                print("Please input a valid integer between 0 and 99.")
+
         data_str = [quantity1, quantity2, quantity3, quantity4]
         sales_data = data_str
         if validate_data(sales_data):
-            print("Valid positive integer!")
+            print("Valid positive integer!") 
             break
     return sales_data
 
