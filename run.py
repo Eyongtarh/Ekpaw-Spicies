@@ -45,7 +45,7 @@ def get_sales_data():
     """
     while True:
         print(f"""
-\nPlease enter sales data from the last market.
+\nPlease enter sales data from the last market day.
 Data should be a positive whole number between/from 0 and 99.
 Data will be requested one at a time for the four different spicies.\n
         """)
