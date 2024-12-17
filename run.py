@@ -232,14 +232,18 @@ Menu:
             print("Invalid choice. Please choose 1, 2, or 3.")
             main()
 
-
         """
         Ask if the user wants to add another sales data
         """
         continue_input = input(
-            "\nDo you want to enter another sales data, enter y for yes, otherwise, enter any key?"
-            ).lower()
-        if continue_input != 'y':
+        "\nDo you want to enter another sales data, enter y for yes, and n for no?\n"
+        ).lower()
+        if continue_input == 'y':
+            main()
+        elif continue_input == 'n':
+            print("Program exited")
+            break
+        else:
             print("Program exited")
             break
 
