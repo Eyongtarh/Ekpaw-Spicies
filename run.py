@@ -53,38 +53,38 @@ Data will be requested one at a time for the four different spicies.\n
             try:
                 quantity1 = input("Enter the garlic quantity sold:\n").strip()
                 if not -1 < int(quantity1) < 100:      
-                            print("Please value must be between 0 and 99") 
+                            print("Please value must be between/from 0 and/to 99.") 
                 else:
                     break    
             except Exception:
-                print("Please input a valid integer between 0 and 99.")
+                print("Please input a valid integer between/from 0 and/to 99.")
         while True:
             try:
                 quantity2 = input("Enter the leek quantity sold:\n").strip()
                 if not -1 < int(quantity2) < 100:
-                            print("Please value must be between 0 and 99")
+                            print("Please value must be between/from 0 and/to 99.")
                 else:
                     break  
             except Exception:
-                print("Please input a valid integer between 0 and 99.")
+                print("Please input a valid integer between/from 0 and/to 99.")
         while True:
             try:
                 quantity3 = input("Enter the onion quantity sold:\n").strip()
                 if not -1 < int(quantity3) < 100:
-                            print("Please value must be between 0 and 99")
+                            print("Please value must be between/from 0 and/to 99.")
                 else:
                     break  
             except Exception:
-                print("Please input a valid integer between 0 and 99.")
+                print("Please input a valid integer between/from 0 and/to 99.")
         while True:
             try:
                 quantity4 = input("Enter the okra quantity sold:\n").strip()
                 if not -1 < int(quantity4) < 100:
-                            print("Please value must be between 0 and 99")
+                            print("Please value must be between/from 0 and/to 99.")
                 else:
                     break   
             except Exception:
-                print("Please input a valid integer between 0 and 99.")
+                print("Please input a valid integer between/from 0 and/to 99.")
 
         data_str = [quantity1, quantity2, quantity3, quantity4]
         sales_data = data_str
@@ -236,7 +236,7 @@ Menu:
         Ask if the user wants to add another sales data
         """
         continue_input = input(
-        "\nDo you want to enter another sales data, enter y for yes, and n for no?\n"
+        "\nDo you want to enter another sales data, enter y for yes, and n or any key for no?\n"
         ).lower()
         if continue_input == 'y':
             main()
