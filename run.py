@@ -216,7 +216,7 @@ def main():
 Menu:
 1. Input new data
 2. Display old data
-3 or space. Exit
+3. Exit
         """)
         choice = input("Enter your choice from above (1, 2, or 3): \n")
         if choice == '1':
@@ -235,9 +235,9 @@ Menu:
         elif choice == '3':
             print("Program exited")
             break
-        elif choice == '':
-            print("Program exited")
-            break
+        elif choice != '1' or '2' or '3':
+            print("Invalid choice. Please choose 1, 2, or 3.")
+            main()
         else:
             print("Invalid choice. Please choose 1, 2, or 3.")
             main()
@@ -245,7 +245,8 @@ Menu:
         """
         Ask if the user wants to add another sales data
         """
-        continue_input = input(f"""\nDo you want to enter another sales data?,
+        continue_input = input(f"""\n
+        Do you want to enter another sales data?,
         enter y for yes or (any key) for no?\n
         """).lower()
         if continue_input == 'y':
