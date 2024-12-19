@@ -2,7 +2,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 import numpy as np
 from tabulate import tabulate
-from simple_term_menu import TerminalMenu
 from colorama import just_fix_windows_console
 just_fix_windows_console()
 
@@ -218,7 +217,11 @@ Menu:
 2. Display old data
 3. Exit
         """)
-        choice = input("Enter your choice from above (1, 2, or 3): \n")
+        try:
+            choice = input("Enter your choice from above (1, 2, or 3): \n").strip()
+        except ValueError:
+            print("Invalid choice. Please choose 1, 2, or 3.")
+            continue
         if choice == '1':
             data = get_sales_data()
             sales_data = [int(num) for num in data]
@@ -235,26 +238,8 @@ Menu:
         elif choice == '3':
             print("Program exited")
             break
-        elif choice != '1' or '2' or '3':
-            print("Invalid choice. Please choose 1, 2, or 3.")
-            main()
         else:
             print("Invalid choice. Please choose 1, 2, or 3.")
-            main()
-
-        """
-        Ask if the user wants to add another sales data
-        """
-        continue_input = input(f"""\n
-        Do you want to enter another sales data?,
-        enter y for yes or (any key) for no?\n
-        """).lower()
-        if continue_input == 'y':
-            main()
-        else:
-            print("Program exited")
-        break
-
 
 if __name__ == "__main__":
     main()
