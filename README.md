@@ -9,11 +9,11 @@ kilograms. The spicies are garlic, leek , onion, and okra.
 ## Instruction to use the app
 
 ### Features:
-The user must enter a choice in the menu section where there are three options to choice one at a time which are:
+The user must enter a choice in the menu section where there are three options as follows:
 - To input new data.
 - To display existing data.
 - To exit.
-* if user enters a wrong number a wrong message will appear. Appearance of menu page is shown below:
+* if user enters a wrong number, a wrong message will appear. Appearance of menu page is shown below:
 ![](assets/images/menu.png)
 
 
@@ -21,10 +21,10 @@ The user must enter a choice in the menu section where there are three options t
 1. Requesting input:
 The user must enter the sales data for the four spicies one after the other. The value must be a positive integer
 between 0 and 99. There is a while loop for each input and another while loop for when all inputs are collected.
-* if user enters a wrong number a wrong message will appear. Appearance of input page is shown below:
+* if user enters a wrong number, a wrong message will appear. Appearance of input page is shown below:
 ![](assets/images/inputs.png)
  
-- Afte the requested sales data is collected, it is then validated and match the sales data into the correct formate in
+- After the requested sales data is collected, it is then validated and match the sales data into the correct formate in
 the worksheet, and update the sales worksheet with sales data. 
 - Thereafter, the cost prices and sales prices in worksheet is matched with sales data to calculate the total cost and total revenue of each spicies and updated to worksheet.
 - The profit/loss is then calculated from total revenue and total cost for each spices and updated to worksheet.
@@ -32,33 +32,26 @@ the worksheet, and update the sales worksheet with sales data.
 to be viewed by the user. The photo is show below:
 ![](assets/images/display_to_user.png)
 
-2. Asking user to continue or exit:
-The user is asked to either continue to enter more inputs or exit the program.
-* if user enters a wrong value a wrong message will appear. Appearance of this page is shown below:
-![](assets/images/exit_continue.png)
+2. The program then returns to menu options:
+* if user enters a wrong value, a wrong message will appear. Same as in input new data choice.
 
 ### To display existing data choice:
 1. Display of data:
 Here, The sum of total profit/loss, sum of total cost, and sum of total revenue of spicies in the last market day 
 is displayed to the user. The data from the worksheet is also displayed in a table formate. This table data includes,
-sales data, total cost, total revenue and profit/loss data. The photo is shown below.
+sales data, total cost, total revenue and profit/loss data. The display is same as the photo above.
 
-2. Asking user to continue or exit:
-The user is asked to either continue to enter more inputs or exit the program.
-* if user enters a wrong value a wrong message will appear. Same as in input new data choice.
+2. The program then returns to menu options:
+* if user enters a wrong value, a wrong message will appear. Same as in input new data choice.
 
-### To exit:
-The user is presented with the option to quit the program.
-* if user enters a wrong value a wrong message will appear. Same as in input new data choice.
-
-## Exit
+### Exit
 Here, the program shows that it has been teminated by showing program existed.
 The photo is shown below:
 ![](assets/images/exit_program.png)
 
 ## Future plan
-* More calculations can be made from the sales data in respect to averages, totals, stock ... for better business
-decisions.
+* More calculations can be made from the sales data in respect to averages, totals, stock and so on for
+better business decisions.
 
 ## Languages
 * Python3 was used to anchor the project and direct all application behavior.
@@ -71,7 +64,8 @@ decisions.
 
 ## Testing
 
-* All clear, no errors found [CI Python Linter](https://pep8ci.herokuapp.com/#) 
+* Two errors found on two functions due to long names when passing through 
+[CI Python Linter](https://pep8ci.herokuapp.com/#) 
 
 ## Deployment
 
@@ -95,8 +89,8 @@ decisions.
 
 ## Credits
 
-I got some help from the Love sandwiches project, course conten.
+I got some help from the Love sandwiches project and course content.
 
 ## Acknowledgements
 
-- [Code Institute](https://codeinstitute.net/) tutors and Mentor for their continues support.
+- [Code Institute](https://codeinstitute.net/) tutors and Mentor:Iuliia Konovalova, for their continues support.
