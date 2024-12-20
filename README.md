@@ -14,7 +14,8 @@ The user must enter a choice in the menu section where there are three options a
 - To display existing data.
 - To exit.
 * if user enters a wrong number, a wrong message will appear. Appearance of menu page is shown below:
-![](assets/images/menu.png)
+
+[](assets/images/menu.png)
 
 
 #### To input new data choice:
@@ -22,6 +23,7 @@ The user must enter a choice in the menu section where there are three options a
 The user must enter the sales data for the four spicies one after the other. The value must be a positive integer
 between 0 and 99. There is a while loop for each input and another while loop for when all inputs are collected.
 * if user enters a wrong number, a wrong message will appear. Appearance of input page is shown below:
+
 ![](assets/images/inputs.png)
  
 - After the requested sales data is collected, it is then validated and match the sales data into the correct formate in
@@ -30,6 +32,7 @@ the worksheet, and update the sales worksheet with sales data.
 - The profit/loss is then calculated from total revenue and total cost for each spices and updated to worksheet.
 - The sum of total profit/loss, sum of total cost, and sum of total revenue of spicies in the last market day is parse to
 to be viewed by the user. The photo is show below:
+
 ![](assets/images/display_to_user1.png)
 ![](assets/images/display_to_user2.png)
 
@@ -46,9 +49,22 @@ sales data, total cost, total revenue and profit/loss data. The display is same 
 * if user enters a wrong value, a wrong message will appear. Same as in input new data choice.
 
 ### Exit
-Here, the program shows that it has been teminated by showing program existed.
+Here, the program shows that it has been teminated by showing program existed by inputing 3.
+* if user enters a wrong value, a wrong message will appear. Same as in input new data choice.
 The photo is shown below:
+
 ![](assets/images/exit_program.png)
+
+### Wrong message for entering wrong data:
+1. Menu:
+The examples of wrong messages under menu options is shown below:
+
+![](assets/images/wrong_message1.png)
+
+2. Input new data:
+The examples of wrong messages under input new data is shown below:
+
+![](assets/images/wrong_message2.png)
 
 ## Future plan
 * More calculations can be made from the sales data in respect to averages, totals, stock and so on for
