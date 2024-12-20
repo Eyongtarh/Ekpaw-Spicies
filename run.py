@@ -25,7 +25,7 @@ def display_data():
     if False:
         print(Back.RED + "No data available.")
     else:
-        print(Fore.MAGENTA + "\nCurrent Data:")
+        print("\nCurrent Data:")
         sales = SHEET.worksheet('sales').get_all_values()
         spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
         spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
