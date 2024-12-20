@@ -61,7 +61,7 @@ Data will be requested one at a time for the four different spicies.\n
                     break
             except Exception:
                 print(f"""
-                {Fore.RED} Please input a valid integer between 0 and 99.
+                {Fore.RED} Please input a valid number between 0 and 99.
                 """)
         while True:
             try:
@@ -72,7 +72,7 @@ Data will be requested one at a time for the four different spicies.\n
                     break
             except Exception:
                 print(f"""
-                {Fore.RED} Please input a valid integer between 0 and 99.
+                {Fore.RED} Please input a valid number between 0 and 99.
                 """)
         while True:
             try:
@@ -83,7 +83,7 @@ Data will be requested one at a time for the four different spicies.\n
                     break
             except Exception:
                 print(f"""
-                {Fore.RED} Please input a valid integer between 0 and 99.
+                {Fore.RED} Please input a valid number between 0 and 99.
                 """)
         while True:
             try:
@@ -94,7 +94,7 @@ Data will be requested one at a time for the four different spicies.\n
                     break
             except Exception:
                 print(f"""
-                {Fore.RED} Please input a valid integer between 0 and 99.
+                {Fore.RED} Please input a valid number between 0 and 99.
                 """)
 
         data_str = [quantity1, quantity2, quantity3, quantity4]
