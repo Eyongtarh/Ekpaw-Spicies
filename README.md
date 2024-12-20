@@ -64,7 +64,7 @@ better business decisions.
 
 ## Testing
 
-* Two errors found on two functions due to long names when passing through 
+* One error found on a functions due to long name when passing through 
 [CI Python Linter](https://pep8ci.herokuapp.com/#) 
 
 ## Deployment

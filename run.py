@@ -2,8 +2,9 @@ import gspread
 from google.oauth2.service_account import Credentials
 import numpy as np
 from tabulate import tabulate
-from colorama import just_fix_windows_console
-just_fix_windows_console()
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -22,9 +23,9 @@ def display_data():
     Function to display existing data
     """
     if False:
-        print("No data available.")
+        print(Back.RED + "No data available.")
     else:
-        print("Current Data:")
+        print(Fore.MAGENTA + "Current Data:")
         sales = SHEET.worksheet('sales').get_all_values()
         spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
         spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
@@ -45,52 +46,66 @@ def get_sales_data():
     complete data collected and a while loop for each data to be collected.
     """
     while True:
-        print(f"""
+        print(
+         f"""
+        {Fore.LIGHTYELLOW_EX}
 \nPlease enter sales data from the last market day.
-Data should be a positive whole number between/from 0 and/to 99.
+Data should be a positive whole number between 0 and 99.
 Data will be requested one at a time for the four different spicies.\n
         """)
         while True:
             try:
                 quantity1 = input("Enter the garlic quantity sold:\n").strip()
                 if not -1 < int(quantity1) < 100:
-                    print("Please value must be between/from 0 and/to 99.")
+                    print(Fore.RED + "Please value must be between 0 and 99.")
                 else:
                     break
             except Exception:
-                print("Please input a valid integer between/from 0 and/to 99.")
+                print(
+                 f"""
+                {Fore.RED} Please input a valid integer between 0 and 99.
+                """)
         while True:
             try:
                 quantity2 = input("Enter the leek quantity sold:\n").strip()
                 if not -1 < int(quantity2) < 100:
-                    print("Please value must be between/from 0 and/to 99.")
+                    print(Fore.RED + "Please value must be between 0 and 99.")
                 else:
                     break
             except Exception:
-                print("Please input a valid integer between/from 0 and/to 99.")
+                print(
+                 f"""
+                {Fore.RED} Please input a valid integer between 0 and 99.
+                """)
         while True:
             try:
                 quantity3 = input("Enter the onion quantity sold:\n").strip()
                 if not -1 < int(quantity3) < 100:
-                    print("Please value must be between/from 0 and/to 99.")
+                    print(Fore.RED + "Please value must be between 0 and 99.")
                 else:
                     break
             except Exception:
-                print("Please input a valid integer between/from 0 and/to 99.")
+                print(
+                 f"""
+                {Fore.RED} Please input a valid integer between 0 and 99.
+                """)
         while True:
             try:
                 quantity4 = input("Enter the okra quantity sold:\n").strip()
                 if not -1 < int(quantity4) < 100:
-                    print("Please value must be between/from 0 and/to 99.")
+                    print(Fore.RED + "Please value must be between 0 and 99.")
                 else:
                     break
             except Exception:
-                print("Please input a valid integer between/from 0 and/to 99.")
+                print(
+                 f"""
+                {Fore.RED} Please input a valid integer between 0 and 99.
+                """)
 
         data_str = [quantity1, quantity2, quantity3, quantity4]
         sales_data = data_str
         if validate_data(sales_data):
-            print("Valid positive integer!")
+            print(Fore.CYAN + Style.BRIGHT + "Valid positive integer!")
             break
     return sales_data
 
@@ -108,7 +123,7 @@ def validate_data(values):
                 f"Exactly 4 values required, you provided {len(values)}"
             )
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again. \n")
+        print(f"{Fore.RED}Invalid data: {e}, please try again. \n")
         return False
     return True
 
@@ -121,7 +136,7 @@ def update_worksheet(data, worksheet):
     print(f"Updating {worksheet} worksheet... \n")
     worksheet_to_update = SHEET.worksheet(worksheet)
     worksheet_to_update.append_row(data)
-    print(f"{worksheet} worksheet updated successfully\n")
+    print(f"{Fore.MAGENTA}{worksheet} worksheet updated successfully\n")
 
 
 def calculate_spicies_revenue(sales_row):
@@ -180,7 +195,11 @@ def display_data_to_user():
     spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
     spicies_revenue_row = spicies_revenue[-1]
     total_spicies_revenue = sum(int(item) for item in spicies_revenue_row)
-    print("Total spicies revenue for last market day sales is:")
+    print(
+     f"""
+    {Fore.LIGHTBLUE_EX}
+    Total spicies revenue for last market day sales is:
+    """)
     print(total_spicies_revenue, '\n')
 
     """
@@ -190,7 +209,11 @@ def display_data_to_user():
     spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
     spicies_cost_row = spicies_cost[-1]
     total_spicies_cost = sum(int(item) for item in spicies_cost_row)
-    print("Total spicies cost for last market day sales is:")
+    print(
+     f"""
+    {Fore.LIGHTBLUE_EX}
+    Total spicies cost for last market day sales is:
+    """)
     print(total_spicies_cost, '\n')
 
     """
@@ -200,7 +223,11 @@ def display_data_to_user():
     profit_loss = SHEET.worksheet("profit_loss").get_all_values()
     profit_loss_row = profit_loss[-1]
     total_profit_loss = sum(int(item) for item in profit_loss_row)
-    print("Total profit for last market day sales is:")
+    print(
+     f"""
+    {Fore.LIGHTBLUE_EX}
+    Total profit for last market day sales is:
+    """)
     print(total_profit_loss, '\n')
     return total_spicies_revenue, total_spicies_cost, total_profit_loss
 
@@ -211,16 +238,19 @@ def main():
     """
     while True:
         print(f"""
-\nWelcome to Ekpaw Spicies Data Automation\n
+{Fore.LIGHTGREEN_EX + Style.BRIGHT}\nWelcome to Ekpaw Spicies Data Automation\n
 Menu:
 1. Input new data
 2. Display old data
 3. Exit
         """)
         try:
-            choice = input("Enter your choice from above (1, 2, or 3): \n").strip()
+            choice = input(
+             f"""
+            {Fore.BLUE}Enter your choice from above (1, 2, or 3):\n
+            """)
         except ValueError:
-            print("Invalid choice. Please choose 1, 2, or 3.")
+            print(Fore.RED + "Invalid choice. Please choose 1, 2, or 3.")
             continue
         if choice == '1':
             data = get_sales_data()
@@ -236,10 +266,10 @@ Menu:
         elif choice == '2':
             display_data()
         elif choice == '3':
-            print("Program exited")
+            print(Fore.RED + Style.BRIGHT + "Program exited")
             break
         else:
-            print("Invalid choice. Please choose 1, 2, or 3.")
+            print(Fore.RED + "Invalid choice. Please choose 1, 2, or 3.")
 
 
 if __name__ == "__main__":
