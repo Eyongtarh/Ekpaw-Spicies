@@ -25,7 +25,7 @@ def display_data():
     if False:
         print(Back.RED + "No data available.")
     else:
-        print("\nCurrent Data:")
+        print(Fore.WHITE + "\nCurrent Data:")
         sales = SHEET.worksheet('sales').get_all_values()
         spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
         spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
@@ -190,7 +190,7 @@ def display_data_to_user():
     spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
     spicies_revenue_row = spicies_revenue[-1]
     total_spicies_revenue = sum(int(item) for item in spicies_revenue_row)
-    print(f"""{Fore.LIGHTBLUE_EX}
+    print(f"""{Fore.LIGHTYELLOW_EX}
     Total spicies revenue for last market day sales is:
     """)
     print(total_spicies_revenue, '\n')
@@ -202,7 +202,7 @@ def display_data_to_user():
     spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
     spicies_cost_row = spicies_cost[-1]
     total_spicies_cost = sum(int(item) for item in spicies_cost_row)
-    print(f"""{Fore.LIGHTBLUE_EX}
+    print(f"""{Fore.LIGHTYELLOW_EX}
     Total spicies cost for last market day sales is:
     """)
     print(total_spicies_cost, '\n')
@@ -214,7 +214,7 @@ def display_data_to_user():
     profit_loss = SHEET.worksheet("profit_loss").get_all_values()
     profit_loss_row = profit_loss[-1]
     total_profit_loss = sum(int(item) for item in profit_loss_row)
-    print(f"""{Fore.LIGHTBLUE_EX}
+    print(f"""{Fore.LIGHTYELLOW_EX}
     Total profit for last market day sales is:
     """)
     print(total_profit_loss, '\n')
@@ -234,7 +234,7 @@ Menu:
 3. Exit
         """)
         try:
-            choice = input(f"""{Fore.BLUE}
+            choice = input(f"""{Fore.LIGHTBLUE_EX}{Style.BRIGHT}
             Enter your choice from above (1, 2, or 3):\n
             """)
         except ValueError:
