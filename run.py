@@ -46,13 +46,12 @@ def get_sales_data():
     complete data collected and a while loop for each data to be collected.
     """
     while True:
-        print(
-         f"""
+        print(f"""
         {Fore.LIGHTYELLOW_EX}
 \nPlease enter sales data from the last market day.
 Data should be a positive whole number between 0 and 99.
 Data will be requested one at a time for the four different spicies.\n
-        """)
+    """)
         while True:
             try:
                 quantity1 = input("Enter the garlic quantity sold:\n").strip()
@@ -61,8 +60,7 @@ Data will be requested one at a time for the four different spicies.\n
                 else:
                     break
             except Exception:
-                print(
-                 f"""
+                print(f"""
                 {Fore.RED} Please input a valid integer between 0 and 99.
                 """)
         while True:
@@ -73,8 +71,7 @@ Data will be requested one at a time for the four different spicies.\n
                 else:
                     break
             except Exception:
-                print(
-                 f"""
+                print(f"""
                 {Fore.RED} Please input a valid integer between 0 and 99.
                 """)
         while True:
@@ -85,8 +82,7 @@ Data will be requested one at a time for the four different spicies.\n
                 else:
                     break
             except Exception:
-                print(
-                 f"""
+                print(f"""
                 {Fore.RED} Please input a valid integer between 0 and 99.
                 """)
         while True:
@@ -97,8 +93,7 @@ Data will be requested one at a time for the four different spicies.\n
                 else:
                     break
             except Exception:
-                print(
-                 f"""
+                print(f"""
                 {Fore.RED} Please input a valid integer between 0 and 99.
                 """)
 
@@ -195,8 +190,7 @@ def display_data_to_user():
     spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
     spicies_revenue_row = spicies_revenue[-1]
     total_spicies_revenue = sum(int(item) for item in spicies_revenue_row)
-    print(
-     f"""
+    print(f"""
     {Fore.LIGHTBLUE_EX}
     Total spicies revenue for last market day sales is:
     """)
@@ -209,8 +203,7 @@ def display_data_to_user():
     spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
     spicies_cost_row = spicies_cost[-1]
     total_spicies_cost = sum(int(item) for item in spicies_cost_row)
-    print(
-     f"""
+    print(f"""
     {Fore.LIGHTBLUE_EX}
     Total spicies cost for last market day sales is:
     """)
@@ -223,8 +216,7 @@ def display_data_to_user():
     profit_loss = SHEET.worksheet("profit_loss").get_all_values()
     profit_loss_row = profit_loss[-1]
     total_profit_loss = sum(int(item) for item in profit_loss_row)
-    print(
-     f"""
+    print(f"""
     {Fore.LIGHTBLUE_EX}
     Total profit for last market day sales is:
     """)
@@ -245,10 +237,9 @@ Menu:
 3. Exit
         """)
         try:
-            choice = input(
-             f"""
+            choice = input(f"""
             {Fore.BLUE}Enter your choice from above (1, 2, or 3):\n
-            """)
+        """)
         except ValueError:
             print(Fore.RED + "Invalid choice. Please choose 1, 2, or 3.")
             continue
