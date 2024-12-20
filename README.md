@@ -30,7 +30,8 @@ the worksheet, and update the sales worksheet with sales data.
 - The profit/loss is then calculated from total revenue and total cost for each spices and updated to worksheet.
 - The sum of total profit/loss, sum of total cost, and sum of total revenue of spicies in the last market day is parse to
 to be viewed by the user. The photo is show below:
-![](assets/images/display_to_user.png)
+![](assets/images/display_to_user1.png)
+![](assets/images/display_to_user2.png)
 
 2. The program then returns to menu options:
 * if user enters a wrong value, a wrong message will appear. Same as in input new data choice.
