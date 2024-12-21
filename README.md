@@ -6,9 +6,8 @@ This is an a data automation to calculate profit or loss in each market day give
 the total quantity of goods sold. The goods here are four different spicies sold in
 kilograms. The spicies are garlic, leek , onion, and okra.
 
-## Instruction to use the app
 
-### Features:
+## Features:
 The user must enter a choice in the menu section where there are three options as follows:
 - To input new data.
 - To display existing data.
@@ -18,7 +17,7 @@ The user must enter a choice in the menu section where there are three options a
 ![](documentation/menu.png)
 
 
-#### To input new data choice:
+### To input new data choice:
 1. Requesting input:
 The user must enter the sales data for the four spicies one after the other. The value must be a positive integer
 between 0 and 99. There is a while loop for each input and another while loop for when all inputs are collected.
@@ -70,19 +69,70 @@ The examples of wrong messages under input new data is shown below:
 * More calculations can be made from the sales data in respect to averages, totals, stock and so on for
 better business decisions.
 
-## Languages
-* Python3 was used to anchor the project and direct all application behavior.
+## Lucidchart
 
-## Tools:
+ The lucidchart represents the logic of the application:
 
-* Gidpod was used as the main tool to write and edit code.
-* Git was used for the version control of the website.
-* GitHub was used to host the code of the website.
+  ![Image](documentation/lucidchart.png)
+
+
+## Technologies Used
+
+### Languages:
+
+ - Python used to anchor the project and direct all application behavior
+
+### Frameworks/Libraries, Programmes and Tools:
+#### Python modules/packages:
+
+#### Library imports:
+
+- Gspread
+- Google-auth
+- Numpy
+- Tabulate
+- Colorama was used to add colors and styles to the project.
+
+#### Other tools:
+
+- Gitpod was used as the main tool to write and edit code.
+- Git was used for the version control of the website.
+- GitHub was used to host the code of the website.
+- Lucidchart was used to make a flowchart for the README file.
+- Heroku was used to deploy my project.
+
+## Bugs 
+
+- While coding, I encountered a bug, when there is no existing data to display,
+upon pressing 2 in menu to display current data, the program fails. Seen below:
+
+![Bug](documentation/bug-python.png)
+
+* Solution: Solve this by introducing try and except statement in the display data function.
+The photo is shown below:
+
+ ![Solved Bug](documentation/solved-bug.png)
+
+- Function to input data for each spicies will return to the first function each time an error
+occured at any level while entering data.
+
+* Solution: I introduced a while loop for each spiceis input given that there was already a while loop
+for the function that collects all the four enteries.
+
+## Unsolved bugs
+
+* None.
 
 ## Testing
 
-* One error found on a functions due to long name when passing through 
-[CI Python Linter](https://pep8ci.herokuapp.com/#) 
+* All clear, no errors found when passing through [CI Python Linter](https://pep8ci.herokuapp.com/#).
+
+Photo of test start and end of page below:
+
+
+![Testing](documentation/testing1.png)
+![Testing](documentation/testing2.png)
+
 
 ## Deployment
 

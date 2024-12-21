@@ -39,7 +39,6 @@ def display_data():
         """)
 
 
-
 def get_sales_data():
     """
     Get sales figures input from the user.
@@ -60,7 +59,7 @@ Data will be requested one at a time for the four different spicies.\n
                 quantity1 = input("Enter the garlic quantity sold:\n").strip()
                 if not -1 < int(quantity1) < 100:
                     print(f"""{Fore.RED}
-                    Please value must be a positive whole numberbetween 0 and 99.
+                Please value must be a positive whole numberbetween 0 and 99.
                 """)
                 else:
                     break
@@ -73,7 +72,7 @@ Data will be requested one at a time for the four different spicies.\n
                 quantity2 = input("Enter the leek quantity sold:\n").strip()
                 if not -1 < int(quantity2) < 100:
                     print(f"""{Fore.RED}
-                    Please value must be a positive whole numberbetween 0 and 99.
+                Please value must be a positive whole numberbetween 0 and 99.
                 """)
                 else:
                     break
@@ -86,7 +85,7 @@ Data will be requested one at a time for the four different spicies.\n
                 quantity3 = input("Enter the onion quantity sold:\n").strip()
                 if not -1 < int(quantity3) < 100:
                     print(f"""{Fore.RED}
-                    Please value must be a positive whole numberbetween 0 and 99.
+                Please value must be a positive whole numberbetween 0 and 99.
                 """)
                 else:
                     break
@@ -99,7 +98,7 @@ Data will be requested one at a time for the four different spicies.\n
                 quantity4 = input("Enter the okra quantity sold:\n").strip()
                 if not -1 < int(quantity4) < 100:
                     print(f"""{Fore.RED}
-                    Please value must be a positive whole numberbetween 0 and 99.
+                Please value must be a positive whole numberbetween 0 and 99.
                 """)
                 else:
                     break
@@ -209,8 +208,8 @@ def display_data_to_user():
     """)
     print(total_spicies_revenue, '\n')
 
-    #To display current data to user
-    #Total cost for last market day sales
+    # To display current data to user
+    # Total cost for last market day sales
     spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
     spicies_cost_row = spicies_cost[-1]
     total_spicies_cost = sum(int(item) for item in spicies_cost_row)
@@ -219,8 +218,8 @@ def display_data_to_user():
     """)
     print(total_spicies_cost, '\n')
 
-    #To display current data to user
-    #Total profit/loss for last market day sales
+    # To display current data to user
+    # Total profit/loss for last market day sales
     profit_loss = SHEET.worksheet("profit_loss").get_all_values()
     profit_loss_row = profit_loss[-1]
     total_profit_loss = sum(int(item) for item in profit_loss_row)
