@@ -34,7 +34,9 @@ def display_data():
         print(tabulate(spicies_cost))
         print(tabulate(profit_loss))
     except Exception:
-        print(Fore.RED + Style.BRIGHT + "No data available.")
+        print(f"""{Fore.RED + Style.BRIGHT}
+        Something went wrong or no data available.
+        """)
 
 
 
