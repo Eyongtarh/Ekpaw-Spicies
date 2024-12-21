@@ -15,7 +15,7 @@ The user must enter a choice in the menu section where there are three options a
 - To exit.
 * if user enters a wrong number, a wrong message will appear. Appearance of menu page is shown below:
 
-[](assets/images/menu.png)
+[](documentation/menu.png)
 
 
 #### To input new data choice:
