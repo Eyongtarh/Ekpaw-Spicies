@@ -187,7 +187,10 @@ def calculate_profit_loss_data():
     spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
     spicies_cost_row = spicies_cost[-1]
     profit_loss_data = []
-    for spicies_revenue, spicies_cost in zip(spicies_revenue_row, spicies_cost_row):
+    for spicies_revenue, spicies_cost in zip(
+        spicies_revenue_row,
+        spicies_cost_row
+    ):
         profit_loss = int(spicies_revenue) - int(spicies_cost)
         profit_loss_data.append(profit_loss)
     return profit_loss_data
