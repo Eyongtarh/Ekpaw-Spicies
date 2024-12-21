@@ -22,19 +22,20 @@ def display_data():
     """
     Function to display existing data
     """
-    if False:
-        print(Back.RED + "No data available.")
-    else:
+    try:
         print(Fore.WHITE + "\nCurrent Data:")
         sales = SHEET.worksheet('sales').get_all_values()
         spicies_revenue = SHEET.worksheet("spicies_revenue").get_all_values()
         spicies_cost = SHEET.worksheet("spicies_cost").get_all_values()
         profit_loss = SHEET.worksheet("profit_loss").get_all_values()
         display_data_to_user()
-    print(tabulate(sales))
-    print(tabulate(spicies_revenue))
-    print(tabulate(spicies_cost))
-    print(tabulate(profit_loss))
+        print(tabulate(sales))
+        print(tabulate(spicies_revenue))
+        print(tabulate(spicies_cost))
+        print(tabulate(profit_loss))
+    except Exception:
+        print(Fore.RED + Style.BRIGHT + "No data available.")
+
 
 
 def get_sales_data():
@@ -56,45 +57,53 @@ Data will be requested one at a time for the four different spicies.\n
             try:
                 quantity1 = input("Enter the garlic quantity sold:\n").strip()
                 if not -1 < int(quantity1) < 100:
-                    print(Fore.RED + "Please value must be between 0 and 99.")
+                    print(f"""{Fore.RED}
+                    Please value must be a positive whole numberbetween 0 and 99.
+                """)
                 else:
                     break
             except Exception:
-                print(f"""
-                {Fore.RED} Please input a valid number between 0 and 99.
+                print(f"""{Fore.RED}
+                Please input a valid positive whole number between 0 and 99.
                 """)
         while True:
             try:
                 quantity2 = input("Enter the leek quantity sold:\n").strip()
                 if not -1 < int(quantity2) < 100:
-                    print(Fore.RED + "Please value must be between 0 and 99.")
+                    print(f"""{Fore.RED}
+                    Please value must be a positive whole numberbetween 0 and 99.
+                """)
                 else:
                     break
             except Exception:
-                print(f"""
-                {Fore.RED} Please input a valid number between 0 and 99.
+                print(f"""{Fore.RED}
+                Please input a valid positive whole number between 0 and 99.
                 """)
         while True:
             try:
                 quantity3 = input("Enter the onion quantity sold:\n").strip()
                 if not -1 < int(quantity3) < 100:
-                    print(Fore.RED + "Please value must be between 0 and 99.")
+                    print(f"""{Fore.RED}
+                    Please value must be a positive whole numberbetween 0 and 99.
+                """)
                 else:
                     break
             except Exception:
-                print(f"""
-                {Fore.RED} Please input a valid number between 0 and 99.
+                print(f"""{Fore.RED}
+                Please input a valid positive whole number between 0 and 99.
                 """)
         while True:
             try:
                 quantity4 = input("Enter the okra quantity sold:\n").strip()
                 if not -1 < int(quantity4) < 100:
-                    print(Fore.RED + "Please value must be between 0 and 99.")
+                    print(f"""{Fore.RED}
+                    Please value must be a positive whole numberbetween 0 and 99.
+                """)
                 else:
                     break
             except Exception:
-                print(f"""
-                {Fore.RED} Please input a valid number between 0 and 99.
+                print(f"""{Fore.RED}
+                Please input a valid positive whole number between 0 and 99.
                 """)
 
         data_str = [quantity1, quantity2, quantity3, quantity4]
