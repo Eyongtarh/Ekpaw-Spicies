@@ -19,59 +19,60 @@ The user must enter a choice in the menu section where there are three options a
 
 ### To input new data choice:
 1. Requesting input:
-The user must enter the sales data for the four spicies one after the other. The value must be a positive integer
-between 0 and 99. There is a while loop for each input and another while loop for when all inputs are collected.
-* if user enters a wrong number, a wrong message will appear. Appearance of input page is shown below:
+   The user must enter the sales data for the four spicies one after the other. The value must be a positive integer
+   between 0 and 99. There is a while loop for each input and another while loop for when all inputs are collected.
+*  if user enters a wrong number, a wrong message will appear. Appearance of input page is shown below:
 
 ![](documentation/inputs.png)
  
 - After the requested sales data is collected, it is then validated and match the sales data into the correct formate in
-the worksheet, and update the sales worksheet with sales data. 
-- Thereafter, the cost prices and sales prices in worksheet is matched with sales data to calculate the total cost and total revenue of each spicies and updated to worksheet.
+  the worksheet, and update the sales worksheet with sales data. 
+- Thereafter, the cost prices and sales prices in worksheet is matched with sales data to calculate the total cost and 
+  total revenue of each spicies and updated to worksheet.
 - The profit/loss is then calculated from total revenue and total cost for each spices and updated to worksheet.
 - The sum of total profit/loss, sum of total cost, and sum of total revenue of spicies in the last market day is parse to
-to be viewed by the user. The photo is show below:
+  to be viewed by the user. The photo is show below:
 
 ![](documentation/display_to_user1.png)
 ![](documentation/display_to_user2.png)
 
 2. The program then returns to menu options:
-* if user enters a wrong value, a wrong message will appear. Same as in input new data choice.
+*  if user enters a wrong value, a wrong message will appear. Same as in input new data choice.
 
 ### To display existing data choice:
 1. Display of data:
-Here, The sum of total profit/loss, sum of total cost, and sum of total revenue of spicies in the last market day 
-is displayed to the user. The data from the worksheet is also displayed in a table formate. This table data includes,
-sales data, total cost, total revenue and profit/loss data. The display is same as the photo above.
+   Here, The sum of total profit/loss, sum of total cost, and sum of total revenue of spicies in the last market day 
+   is displayed to the user. The data from the worksheet is also displayed in a table formate. This table data includes,
+   sales data, total cost, total revenue and profit/loss data. The display is same as the photo above.
 
 2. The program then returns to menu options:
-* if user enters a wrong value, a wrong message will appear. Same as in input new data choice.
+*  if user enters a wrong value, a wrong message will appear. Same as in input new data choice.
 
 ### Exit
-Here, the program shows that it has been teminated by showing program existed by inputing 3.
+  Here, the program shows that it has been teminated by showing program existed by inputing 3.
 * if user enters a wrong value, a wrong message will appear. Same as in input new data choice.
-The photo is shown below:
+  The photo is shown below:
 
 ![](documentation/exit_program.png)
 
 ### Wrong message for entering wrong data:
 1. Menu:
-The examples of wrong messages under menu options is shown below:
+   The examples of wrong messages under menu options is shown below:
 
 ![](documentation/wrong_message1.png)
 
 2. Input new data:
-The examples of wrong messages under input new data is shown below:
+   The examples of wrong messages under input new data is shown below:
 
 ![](documentation/wrong_message2.png)
 
 ## Future plan
 * More calculations can be made from the sales data in respect to averages, totals, stock and so on for
-better business decisions.
+  better business decisions. Addition and deletion functions can also be introduced.
 
 ## Lucidchart
 
- The lucidchart represents the logic of the application:
+   The lucidchart represents the logic of the application:
 
   ![Image](documentation/lucidchart.png)
 
@@ -80,20 +81,18 @@ better business decisions.
 
 ### Languages:
 
- - Python used to anchor the project and direct all application behavior
+ - Python used to anchor the data automation and direct all application behavior
 
-### Frameworks/Libraries, Programmes and Tools:
-#### Python modules/packages:
-
-#### Library imports:
+### Library imports:
 
 - Gspread used for reading, writing, and formatting cell ranges in googlesheets.
-- Google-auth
-- Numpy
+- Google-auth was used for authenticate, integration andd support for Google APIs, 
+  Google Application Credentials, and libraries.
+- Numpy was used for linear algebra
 - Tabulate was used to create well-formatted tables.
 - Colorama was used to add colors and styles to the project.
 
-#### Other tools:
+### Other tools:
 
 - Gitpod was used as the main tool to write and edit code.
 - Git was used for the version control of the website.
@@ -104,12 +103,12 @@ better business decisions.
 ## Bugs 
 
 - While coding, I encountered a bug, when there is no existing data to display,
-upon pressing 2 in menu to display current data, the program fails. Seen below:
+  upon pressing 2 in menu to display current data, the program fails. Seen below:
 
 ![Bug](documentation/bug-python.png)
 
 * Solution: Solve this by introducing try and except statement in the display data function.
-The photo is shown below:
+  The photo is shown below:
 
  ![Solved Bug](documentation/solved-bug.png)
 
@@ -117,7 +116,7 @@ The photo is shown below:
 occured at any level while entering data.
 
 * Solution: I introduced a while loop for each spiceis input given that there was already a while loop
-for the function that collects all the four enteries.
+  for the function that collects all the four enteries.
 
 ## Unsolved bugs
 
@@ -125,13 +124,20 @@ for the function that collects all the four enteries.
 
 ## Testing
 
-* All clear, no errors found when passing through [CI Python Linter](https://pep8ci.herokuapp.com/#).
+1. All clear, no errors found when passing through [CI Python Linter](https://pep8ci.herokuapp.com/#).
 
-Photo of test start and end of page below:
+   Photo of test start and end of page below:
 
 
 ![Testing](documentation/testing1.png)
 ![Testing](documentation/testing2.png)
+
+2. Application Performance
+
+   For a visual representation of the automation's performance, you can refer to the screenshot below, 
+   captured using Lighthouse:
+
+![Testing](documentation/testing3.png)
 
 
 ## Deployment
@@ -172,9 +178,14 @@ Photo of test start and end of page below:
 
 - Add 2 Config vars
 
-- Key: CREDS    Value: past creds.json content
+1. Key: CREDS    Value: past creds.json content
+       * creds.json file content gotten from gitpod workspace. Photos below:
 
-- Key: PORT    Value: 8000
+![](documentation/gitpod_creds.png)
+
+2. Key: PORT    Value: 8000
+
+Photo of the two config vars below:
 
 ![](documentation/heroku-vars.png)
 
