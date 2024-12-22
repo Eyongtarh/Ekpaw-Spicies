@@ -59,7 +59,7 @@ Data will be requested one at a time for the four different spicies.\n
                 quantity1 = input("Enter the garlic quantity sold:\n").strip()
                 if not -1 < int(quantity1) < 100:
                     print(f"""{Fore.RED}
-                Please value must be a positive whole numberbetween 0 and 99.
+                Please value must be a positive whole number between 0 and 99.
                 """)
                 else:
                     break
@@ -72,7 +72,7 @@ Data will be requested one at a time for the four different spicies.\n
                 quantity2 = input("Enter the leek quantity sold:\n").strip()
                 if not -1 < int(quantity2) < 100:
                     print(f"""{Fore.RED}
-                Please value must be a positive whole numberbetween 0 and 99.
+                Please value must be a positive whole number between 0 and 99.
                 """)
                 else:
                     break
@@ -85,7 +85,7 @@ Data will be requested one at a time for the four different spicies.\n
                 quantity3 = input("Enter the onion quantity sold:\n").strip()
                 if not -1 < int(quantity3) < 100:
                     print(f"""{Fore.RED}
-                Please value must be a positive whole numberbetween 0 and 99.
+                Please value must be a positive whole number between 0 and 99.
                 """)
                 else:
                     break
@@ -98,7 +98,7 @@ Data will be requested one at a time for the four different spicies.\n
                 quantity4 = input("Enter the okra quantity sold:\n").strip()
                 if not -1 < int(quantity4) < 100:
                     print(f"""{Fore.RED}
-                Please value must be a positive whole numberbetween 0 and 99.
+                Please value must be a positive whole number between 0 and 99.
                 """)
                 else:
                     break
