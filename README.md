@@ -87,10 +87,10 @@ better business decisions.
 
 #### Library imports:
 
-- Gspread
+- Gspread used for reading, writing, and formatting cell ranges in googlesheets.
 - Google-auth
 - Numpy
-- Tabulate
+- Tabulate was used to create well-formatted tables.
 - Colorama was used to add colors and styles to the project.
 
 #### Other tools:
@@ -98,7 +98,7 @@ better business decisions.
 - Gitpod was used as the main tool to write and edit code.
 - Git was used for the version control of the website.
 - GitHub was used to host the code of the website.
-- Lucidchart was used to make a flowchart for the README file.
+- Lucidchart was used to make a lucidchart for the README file.
 - Heroku was used to deploy my project.
 
 ## Bugs 
@@ -140,19 +140,51 @@ Photo of test start and end of page below:
 * The program can be reached by the [link](https://ekpaw-spicies-e70a831cb30f.herokuapp.com/)
 
 ### To deploy the project to Heroku so it can be run as a remote web application
+
 - Create a Heroku account if you don't already have one here [Heroku](https://dashboard.heroku.com/).
+
+![](documentation/heroku-account.png)
+
 - Create a new Heroku application on the following page here New [Heroku App](https://dashboard.heroku.com/apps):
+
+![](documentation/heroku-create.png)
+
 - Go to the Deploy tab
+
+![](documentation/heroku-deploy1.png)
+
 - Link your GitHub account and connect the application to the repository you created.
+
+![](documentation/heroku-github.png)
+
 - Go to the Settings tab
+
+![](documentation/heroku-setting.png)
+
 - Click "Add buildpack"
+
+![](documentation/heroku_buildpack.png)
+
 - Add the Python and Node.js buildpacks in the following order
+
+
 - Click Reveal Config Vars
+
 - Add 2 Config vars
+
 - Key: CREDS    Value: past creds.json content
+
 - Key: PORT    Value: 8000
+
+![](documentation/heroku-vars.png)
+
 - Click manual Deploy Branch
+
+![](documentation/heroku-manual.png)
+
 - Click View to launch the application inside a web page.
+
+![](documentation/heroku-view.png)
 
 ## Credits
 
